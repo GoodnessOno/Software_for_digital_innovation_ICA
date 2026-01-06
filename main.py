@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from src.db_utils import get_connection, run_query
 from src import phase1
 from src import phase2
+from src import phase3
 
 
 DB_PATH = "./db/CIS4044-N-SDI-OPENMETEO-PARTIAL.db"
@@ -14,6 +15,10 @@ def print_schema(conn):
     for r in rows:
         print(f" - {r['name']} ({r['type']})")
 
+    rows = run_query(conn, "PRAGMA table_info(cities);")
+    print("\nSchema for cities:")
+    for r in rows:
+        print(f" - {r['name']} ({r['type']})")
 
 def main():
     conn = get_connection(DB_PATH)
@@ -70,7 +75,26 @@ def main():
         fig6 = phase2.plot_total_precip_by_city(conn, "2023-01-01", "2023-12-31")
         phase2.save_figure(fig6, "chart6_total_precip_by_city_2023")
 
-# Show all figures together
+        print("\n--- Phase 3: API Update ---\n")
+        phase3.update_city_weather_from_api(conn, city_id=2, start_date="2025-01-01", end_date="2025-01-14")
+        phase3.update_city_weather_from_api(conn, city_id=3, start_date="2025-02-01", end_date="2025-02-28")
+
+
+        rows = run_query(conn, """
+        SELECT COUNT(*) AS cnt
+        FROM daily_weather_entries
+        WHERE city_id = 2 AND substr(date, 1, 4) = '2025';
+        """)
+        print(f"Rows for London in 2025 now: {rows[0]['cnt']}")
+
+        rows = run_query(conn, """
+        SELECT COUNT(*) AS cnt
+        FROM daily_weather_entries
+        WHERE city_id = 3 AND substr(date, 1, 4) = '2025';
+        """)
+        print(f"Rows for Paris in 2025 now: {rows[0]['cnt']}")
+
+        # Show all figures together
         plt.show()
 
     finally:
