@@ -1,3 +1,7 @@
+# Author: GOODNESS ONONOGBU
+# Student ID: S3573368
+# Date: 2025 - 01 - 06
+
 from pathlib import Path
 import matplotlib.pyplot as plt
 

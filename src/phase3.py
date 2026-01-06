@@ -1,3 +1,7 @@
+# Author: GOODNESS ONONOGBU
+# Student ID: S3573368
+# Date: 2025 - 01 - 06
+
 import time
 import requests
 

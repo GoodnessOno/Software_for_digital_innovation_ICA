@@ -1,2 +1,8 @@
+# Author: GOODNESS ONONOGBU
+# Student ID: S3573368
+# Date: 2025 - 01 - 06
+
 requests
 matplotlib
+pandas
+sqlite3

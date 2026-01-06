@@ -1,3 +1,7 @@
+# Author: GOODNESS ONONOGBU
+# Student ID: S3573368
+# Date: 2025 - 01 - 06
+
 import sqlite3
 import matplotlib.pyplot as plt
 from src.db_utils import get_connection, run_query
