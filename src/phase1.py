@@ -1,14 +1,11 @@
-# Author: <Your name here>
-# Student ID: <Your Student ID>
+# Author: GOODNESS ONONOGBU
+# Student ID: S3573368
+# Date: 2025 - 01 - 06
 
 import sqlite3
 
 # Phase 1 - Starter
 # Note: Display all real/float numbers to 2 decimal places.
-
-'''
-Satisfactory 50-59
-'''
 
 def select_all_countries(connection):
     """
